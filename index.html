@@ -9,37 +9,18 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="app">
-      <div class="box" v-on:mousemove="getCoord">Hover me</div>
-      <p>x: {{ x }}</p>
-      <p>y: {{ y }}</p>
-    </div>
+    <div id="app"></div>
   </body>
   <script>
     const App = {
       data() {
         return {
           name: "Sajan",
-          x: 0,
-          y: 0,
         };
       },
-      methods: {
-        getCoord(event) {
-          this.x = event.clientX;
-          this.y = event.clientY;
-        },
-      },
+      methods: {},
     };
 
     Vue.createApp(App).mount("#app");
   </script>
-
-  <style>
-    .box {
-      background: red;
-      width: 200px;
-      height: 200px;
-    }
-  </style>
 </html>
