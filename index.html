@@ -10,34 +10,23 @@
   </head>
   <body>
     <div id="app">
-      <p>{{ welcome() }}</p>
+      <p v-show="false">Show it</p>
+
+      <p v-if="checkUser()">This is francis</p>
     </div>
   </body>
   <script>
-    const date = new Date().toLocaleString();
     const App = {
       data() {
         return {
-          gretting: "Hello guys today is " + date,
-          isItTrue: false,
-          array: ["Tamil", "John", "Sajan"],
-          obj: {
-            car: "Swift",
-          },
-          func: () => {
-            return "Message from function";
-          },
+          user: "Steve",
+          userAge: 15,
+          allowedAge: 18,
         };
       },
       methods: {
-        welcome() {
-          const randomName =
-            this.array[Math.floor(Math.random() * this.array.length)];
-          if (this.isItTrue) {
-            return `${this.gretting}, my name is ${randomName}`;
-          }
-
-          return this.obj.car;
+        checkUser() {
+          return this.user === "Francis" ? true : false;
         },
       },
     };
