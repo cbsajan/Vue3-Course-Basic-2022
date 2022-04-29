@@ -10,13 +10,7 @@
   </head>
   <body>
     <div id="app">
-      <img v-bind:src="src" v-bind:alt="alt" />
-      <hr />
-      <a v-bind:href="link">Go to Google</a>
-      <hr />
-      <p v-text="myText"></p>
-      <hr />
-      <p v-html="myHtml"></p>
+      <p>{{ welcome() }}</p>
     </div>
   </body>
   <script>
@@ -24,14 +18,28 @@
     const App = {
       data() {
         return {
-          src: "https://picsum.photos/200",
-          alt: "Random Images",
-          link: "https://google.com",
-          myText: "Hi I am Sajan",
-          myHtml: "<b>My HTML Tag in the Variable</b>",
+          gretting: "Hello guys today is " + date,
+          isItTrue: false,
+          array: ["Tamil", "John", "Sajan"],
+          obj: {
+            car: "Swift",
+          },
+          func: () => {
+            return "Message from function";
+          },
         };
       },
-      methods: {},
+      methods: {
+        welcome() {
+          const randomName =
+            this.array[Math.floor(Math.random() * this.array.length)];
+          if (this.isItTrue) {
+            return `${this.gretting}, my name is ${randomName}`;
+          }
+
+          return this.obj.car;
+        },
+      },
     };
 
     Vue.createApp(App).mount("#app");
