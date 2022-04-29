@@ -10,11 +10,13 @@
   </head>
   <body>
     <div id="app">
-      <p>{{ gretting }}</p>
-      <p>Is it true:{{ isItTrue ? 'Yes':'No' }}</p>
-      <p>{{ array[0] }}</p>
-      <p>{{ obj.car }}</p>
-      <p>{{ func() }}</p>
+      <img v-bind:src="src" v-bind:alt="alt" />
+      <hr />
+      <a v-bind:href="link">Go to Google</a>
+      <hr />
+      <p v-text="myText"></p>
+      <hr />
+      <p v-html="myHtml"></p>
     </div>
   </body>
   <script>
@@ -22,17 +24,14 @@
     const App = {
       data() {
         return {
-          gretting: "Hello guys today is " + date,
-          isItTrue: true,
-          array: ["Francis", "Jane"],
-          obj: {
-            car: "Ferrari",
-          },
-          func: () => {
-            return "Message from function";
-          },
+          src: "https://picsum.photos/200",
+          alt: "Random Images",
+          link: "https://google.com",
+          myText: "Hi I am Sajan",
+          myHtml: "<b>My HTML Tag in the Variable</b>",
         };
       },
+      methods: {},
     };
 
     Vue.createApp(App).mount("#app");
