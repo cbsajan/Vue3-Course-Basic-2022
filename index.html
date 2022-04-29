@@ -9,7 +9,39 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <p>{{ welcome() }}</p>
+    </div>
   </body>
-  <script></script>
+  <script>
+    const date = new Date().toLocaleString();
+    const App = {
+      data() {
+        return {
+          gretting: "Hello guys today is " + date,
+          isItTrue: false,
+          array: ["Tamil", "John", "Sajan"],
+          obj: {
+            car: "Swift",
+          },
+          func: () => {
+            return "Message from function";
+          },
+        };
+      },
+      methods: {
+        welcome() {
+          const randomName =
+            this.array[Math.floor(Math.random() * this.array.length)];
+          if (this.isItTrue) {
+            return `${this.gretting}, my name is ${randomName}`;
+          }
+
+          return this.obj.car;
+        },
+      },
+    };
+
+    Vue.createApp(App).mount("#app");
+  </script>
 </html>
