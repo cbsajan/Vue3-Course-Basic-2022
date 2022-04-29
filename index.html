@@ -9,12 +9,25 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div v-once>{{name}}</div>
+      <div>{{name}}</div>
+      {{update()}}
+    </div>
   </body>
   <script>
     const App = {
       data() {
-        return {};
+        return {
+          name: "John",
+        };
+      },
+      methods: {
+        update() {
+          setTimeout(() => {
+            this.name = "Sajan";
+          }, 200);
+        },
       },
     };
     Vue.createApp(App).mount("#app");
