@@ -9,12 +9,37 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <input type="text" v-model="user" />
+      <button v-on:click="toggleActive">Other Actions</button>
+      <hr />
+
+      <div>Message : {{compMessage }}</div>
+      <div>Active : {{compActive}}</div>
+    </div>
   </body>
   <script>
     const App = {
       data() {
-        return {};
+        return {
+          user: "",
+          active: false,
+        };
+      },
+      computed: {
+        compMessage() {
+          console.log("COMPUTED MESSAGE");
+          return this.user === "Sajan" ? "Welcome" : "Now allowed";
+        },
+        compActive() {
+          console.log("COMPUTED ACTIVE");
+          return this.active ? "Active" : "Not active";
+        },
+      },
+      methods: {
+        toggleActive() {
+          this.active = this.active ? false : true;
+        },
       },
     };
     Vue.createApp(App).mount("#app");
