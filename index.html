@@ -9,16 +9,36 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <h1>{{ name }}</h1>
+      <button v-on:click.ctrl="changeName('Ron', $event)">Change name</button>
+
+      <form v-on:submit.prevent="handleForm">
+        <input :value="text" @input="event => text = event.target.value" />
+        <button type="submit" v-on:click="changeName(text, $event)">
+          Submit
+        </button>
+      </form>
+      {{name}}
+    </div>
   </body>
   <script>
     const App = {
       data() {
         return {
-          name: "Sajan",
+          name: "Francis",
+          text: "",
         };
       },
-      methods: {},
+      methods: {
+        handleForm() {
+          console.log("Submit form");
+        },
+        changeName(newName, event) {
+          this.name = newName;
+          console.log(event);
+        },
+      },
     };
 
     Vue.createApp(App).mount("#app");
