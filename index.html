@@ -9,14 +9,42 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <app-header></app-header>
+      <user-name></user-name>
+      <app-footer></app-footer>
+    </div>
   </body>
   <script>
-    const App = {
+    const app = Vue.createApp({});
+
+    app.component("app-header", {
       data() {
-        return {};
+        return {
+          name: "HEADER",
+        };
       },
-    };
-    Vue.createApp(App).mount("#app");
+      template: `<div>{{ name }}</div>`,
+    });
+
+    app.component("user-name", {
+      data() {
+        return {
+          name: "Sajan",
+        };
+      },
+      template: `<div>{{ name }}</div>`,
+    });
+
+    app.component("app-footer", {
+      data() {
+        return {
+          name: "FOOTER",
+        };
+      },
+      template: `<div>{{ name }}</div>`,
+    });
+
+    app.mount("#app");
   </script>
 </html>
