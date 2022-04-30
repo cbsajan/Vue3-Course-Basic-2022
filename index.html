@@ -26,6 +26,13 @@
           active: false,
         };
       },
+      watch: {
+        active(value) {
+          setTimeout(() => {
+            this.active = !this.active;
+          }, 3000);
+        },
+      },
       computed: {
         compMessage() {
           console.log("COMPUTED MESSAGE");
